@@ -1,0 +1,81 @@
+---
+const navItems = [
+  { href: '/', label: 'ホーム' },
+  { href: '/about/', label: 'プロフィール' },
+  { href: '/blog/', label: '活動報告' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container-wide">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 bg-navy-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
+          木
+        </div>
+        <div class="hidden sm:block">
+          <div class="text-navy-800 font-bold text-lg leading-tight">木内 満</div>
+          <div class="text-gray-500 text-xs leading-tight">静岡県議会議員</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200',
+              currentPath === item.href
+                ? 'bg-navy-50 text-navy-700'
+                : 'text-gray-600 hover:text-navy-700 hover:bg-gray-50',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg text-gray-600 hover:text-navy-700 hover:bg-gray-50"
+        aria-label="メニューを開く"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100">
+    <nav class="container-wide py-3 space-y-1">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={[
+            'block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200',
+            currentPath === item.href
+              ? 'bg-navy-50 text-navy-700'
+              : 'text-gray-600 hover:text-navy-700 hover:bg-gray-50',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

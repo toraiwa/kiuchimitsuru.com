@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = [...new Set(posts.map(p => p.data.category))];
+---
+
+<BaseLayout title="活動報告" description="静岡県議会議員 木内満の活動報告。県政活動や地域での取り組みをお伝えします。">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-navy-800 to-navy-900 text-white py-16 sm:py-20">
+    <div class="container-wide">
+      <p class="text-accent-400 font-medium mb-2 text-sm tracking-wide">Blog</p>
+      <h1 class="text-3xl sm:text-4xl font-bold">活動報告</h1>
+      <p class="text-gray-300 mt-3">県政活動や地域での取り組みをお伝えします</p>
+    </div>
+  </section>
+
+  <!-- Blog List -->
+  <section class="py-16 sm:py-20 bg-gray-50">
+    <div class="container-wide">
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="inline-block bg-navy-700 text-white text-sm font-medium px-4 py-2 rounded-full">
+          すべて ({posts.length})
+        </span>
+        {categories.map(cat => {
+          const count = posts.filter(p => p.data.category === cat).length;
+          return (
+            <span class="inline-block bg-white text-gray-600 text-sm font-medium px-4 py-2 rounded-full border border-gray-200">
+              {cat} ({count})
+            </span>
+          );
+        })}
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            slug={post.id}
+          />
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-20 text-gray-500">
+          <p>記事がありません。</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

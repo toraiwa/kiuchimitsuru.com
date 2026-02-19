@@ -1,0 +1,49 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy-900 text-gray-300">
+  <div class="container-wide py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- About -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-navy-800 font-bold text-lg">
+            木
+          </div>
+          <div>
+            <div class="text-white font-bold text-lg">木内 満</div>
+            <div class="text-gray-400 text-sm">静岡県議会議員</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-400">
+          静岡県富士宮市選出。県民の皆さまの声を県政に届け、<br>
+          より良い静岡の未来を目指して活動しています。
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-white font-bold mb-4">サイトマップ</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-white transition-colors">ホーム</a></li>
+          <li><a href="/about/" class="hover:text-white transition-colors">プロフィール</a></li>
+          <li><a href="/blog/" class="hover:text-white transition-colors">活動報告</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-white font-bold mb-4">お問い合わせ</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>静岡県議会議員 木内満事務所</li>
+          <li>静岡県富士宮市</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-navy-700 mt-8 pt-8 text-center text-sm text-gray-500">
+      <p>&copy; {currentYear} 木内満（きうちみつる）事務所. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

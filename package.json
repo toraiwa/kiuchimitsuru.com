@@ -1,0 +1,31 @@
+{
+  "name": "kiuchimitsuru.com",
+  "version": "1.0.0",
+  "description": "静岡県議会議員 木内満 公式Webサイト",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toraiwa/kiuchimitsuru.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toraiwa/kiuchimitsuru.com/issues"
+  },
+  "homepage": "https://github.com/toraiwa/kiuchimitsuru.com#readme",
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.17.3",
+    "tailwindcss": "^3.4.19"
+  }
+}

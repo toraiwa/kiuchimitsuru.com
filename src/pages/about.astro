@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+---
+
+<BaseLayout title="プロフィール" description="静岡県議会議員 木内満のプロフィール。経歴や実績、政策理念についてご紹介します。">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-navy-800 to-navy-900 text-white py-16 sm:py-20">
+    <div class="container-wide">
+      <p class="text-accent-400 font-medium mb-2 text-sm tracking-wide">Profile</p>
+      <h1 class="text-3xl sm:text-4xl font-bold">プロフィール</h1>
+      <p class="text-gray-300 mt-3">経歴・実績のご紹介</p>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <div class="w-40 h-40 bg-navy-200 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span class="text-navy-600 text-5xl font-bold">木</span>
+        </div>
+        <h2 class="text-3xl font-bold text-navy-800 mb-1">木内 満</h2>
+        <p class="text-gray-500">きうち みつる</p>
+        <p class="text-navy-600 font-medium mt-2">静岡県議会議員（富士宮市選出）</p>
+      </div>
+
+      <!-- Biography -->
+      <div class="mb-12">
+        <h3 class="text-xl font-bold text-navy-800 mb-4 flex items-center gap-2">
+          <div class="w-1 h-6 bg-accent-500 rounded-full"></div>
+          ごあいさつ
+        </h3>
+        <div class="text-gray-700 leading-relaxed space-y-4 pl-4">
+          <p>
+            私は静岡県富士宮市に生まれ育ち、この地域の豊かな自然と温かい人々に囲まれて暮らしてきました。
+            富士山の麓に広がる富士宮の素晴らしさを、次の世代にもしっかりと引き継いでいきたい。
+            そんな思いで県政に携わっています。
+          </p>
+          <p>
+            県議会議員として、防災・減災対策、子育て支援の充実、地域経済の活性化など、
+            県民の皆さまの暮らしに密着した課題に全力で取り組んでいます。
+            現場の声を大切にし、具体的な政策提言と実行力で、静岡県の発展に貢献してまいります。
+          </p>
+          <p>
+            皆さまのお声をお聞かせください。一緒に、より良い静岡をつくっていきましょう。
+          </p>
+        </div>
+      </div>
+
+      <!-- Career -->
+      <div class="mb-12">
+        <h3 class="text-xl font-bold text-navy-800 mb-6 flex items-center gap-2">
+          <div class="w-1 h-6 bg-accent-500 rounded-full"></div>
+          経歴
+        </h3>
+        <div class="space-y-4 pl-4">
+          <div class="flex gap-4 items-start">
+            <div class="w-20 shrink-0 text-sm font-medium text-navy-600">出身地</div>
+            <div class="text-gray-700">静岡県富士宮市</div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-20 shrink-0 text-sm font-medium text-navy-600">所属</div>
+            <div class="text-gray-700">静岡県議会議員</div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-20 shrink-0 text-sm font-medium text-navy-600">選挙区</div>
+            <div class="text-gray-700">富士宮市</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Issues -->
+      <div class="mb-12">
+        <h3 class="text-xl font-bold text-navy-800 mb-6 flex items-center gap-2">
+          <div class="w-1 h-6 bg-accent-500 rounded-full"></div>
+          重点活動分野
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-4">
+          <div class="bg-navy-50 rounded-lg p-5">
+            <h4 class="font-bold text-navy-800 mb-2">防災・減災対策</h4>
+            <p class="text-sm text-gray-600">富士山噴火対策、地震・風水害への備え強化、避難体制の整備</p>
+          </div>
+          <div class="bg-navy-50 rounded-lg p-5">
+            <h4 class="font-bold text-navy-800 mb-2">子育て・教育支援</h4>
+            <p class="text-sm text-gray-600">保育環境の充実、教育の質向上、若者の定住促進</p>
+          </div>
+          <div class="bg-navy-50 rounded-lg p-5">
+            <h4 class="font-bold text-navy-800 mb-2">地域経済の活性化</h4>
+            <p class="text-sm text-gray-600">観光振興、農業支援、中小企業の成長促進</p>
+          </div>
+          <div class="bg-navy-50 rounded-lg p-5">
+            <h4 class="font-bold text-navy-800 mb-2">医療・福祉の充実</h4>
+            <p class="text-sm text-gray-600">地域医療体制の強化、高齢者福祉、障がい者支援</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motto -->
+      <div class="bg-gradient-to-r from-navy-700 to-navy-900 text-white rounded-2xl p-8 sm:p-10 text-center">
+        <p class="text-accent-400 text-sm font-medium mb-2">座右の銘</p>
+        <p class="text-2xl sm:text-3xl font-bold mb-3">至誠通天</p>
+        <p class="text-gray-300 text-sm max-w-lg mx-auto">
+          誠を尽くして行動すれば、必ず道は開ける。<br>
+          県民の皆さまに誠実に向き合い、全力で県政に取り組みます。
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

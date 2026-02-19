@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const updatedDate = post.data.updatedDate?.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-navy-800 to-navy-900 text-white py-16 sm:py-20">
+    <div class="container-narrow">
+      <a href="/blog/" class="inline-flex items-center text-gray-400 hover:text-white text-sm mb-4 transition-colors">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        活動報告一覧に戻る
+      </a>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block bg-accent-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+          {post.data.category}
+        </span>
+        <time class="text-sm text-gray-400" datetime={post.data.pubDate.toISOString()}>
+          {formattedDate}
+        </time>
+        {updatedDate && (
+          <span class="text-sm text-gray-400">（更新: {updatedDate}）</span>
+        )}
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">{post.data.title}</h1>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-12 sm:py-16 bg-white">
+    <div class="container-narrow">
+      <article class="prose-blog max-w-none">
+        <Content />
+      </article>
+
+      <!-- Tags -->
+      {post.data.tags.length > 0 && (
+        <div class="mt-10 pt-6 border-t border-gray-200">
+          <div class="flex flex-wrap gap-2">
+            {post.data.tags.map(tag => (
+              <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Navigation -->
+      <div class="mt-10 pt-6 border-t border-gray-200">
+        <a href="/blog/" class="btn-outline text-sm">
+          ← 活動報告一覧に戻る
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
